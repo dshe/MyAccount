@@ -8,35 +8,31 @@ pub enum AccountType {
 }
 
 pub struct Account {
-    pub id: u16,
+    pub id: u32,
     pub account_type: AccountType,
-    pub name: &'static str
+    pub name: String
 }
 
 pub struct Journal {
-    pub id: u16,
-    pub name: &'static str
+    pub id: u32,
+    pub name: String
 }
 
 pub struct Transaction {
-    pub id: u16,
-    pub journal: u16,
-    pub account: u16,
+    pub id: u32,
+    pub journal: u32,
+    pub account: u32,
     pub amount: rust_decimal::Decimal, // credit/debit: positive/negative
-    pub name: &'static str
+    pub description: String
 }
 
 impl Transaction {
     pub fn to_string(self) -> String {
-        format!("id={}, journal={}, account={}, amount={} name={}",
+        format!("id={}, journal={}, account={}, amount={:+} description='{}'",
             self.id, 
-            self.journal.to_string(), 
-            self.account.to_string(), 
-            self.amount.to_string(), 
-            self.name.to_string())
+            self.journal, 
+            self.account, 
+            self.amount, 
+            self.description)
     }
 }
-
-
-
-

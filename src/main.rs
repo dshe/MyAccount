@@ -8,7 +8,7 @@ fn main() {
     // create a sales account and addd it to the list
     let account1 = entities::Account {
         id: 1,
-        name: "sales",
+        name: "sales".to_string(),
         account_type: entities::AccountType::Revenue
     };
     accounts.push(account1);
@@ -16,7 +16,7 @@ fn main() {
     // create a cash account and addd it to the list
     let account2 = entities::Account {
         id: 2,
-        name: "cash",
+        name: "cash".to_string(),
         account_type: entities::AccountType::Asset
     };
     accounts.push(account2);
@@ -27,7 +27,7 @@ fn main() {
     // create a journal and add it to the list
     let journal = entities::Journal {
         id: 3,
-        name: "sale"
+        name: "sale".to_string()
     };
     journals.push(journal);
 
@@ -37,7 +37,7 @@ fn main() {
     // add a transaction to the list for the journal
     let t = entities::Transaction {
         id: 4,
-        name: "processing sale",
+        description: "processing sale".to_string(),
         journal: 3,
         account: 1,
         amount: rust_decimal::Decimal::new(200, 1)
@@ -47,7 +47,7 @@ fn main() {
     // add another transaction to the list for the journal
     let t = entities::Transaction {
         id: 5,
-        name: "collecting cash",
+        description: "collecting cash".to_string(),
         journal: 3,
         account: 2,
         amount: rust_decimal::Decimal::new(-200, 1)
