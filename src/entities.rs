@@ -1,3 +1,6 @@
+use rust_decimal::Decimal;
+use chrono::{DateTime, Utc};
+
 pub enum AccountType {
     Revenue,
     Expense,
@@ -21,8 +24,8 @@ pub struct Transaction {
     pub transaction_id: u64,
     pub journal_id:     u64,
     pub account_id:     u64,
-    pub date:           chrono::DateTime<chrono::Utc>,
-    pub amount:         rust_decimal::Decimal, // credit/debit = positive/negative
+    pub date:           DateTime<Utc>,
+    pub amount:         Decimal, // credit/debit = positive/negative
     pub description:    String
 }
 
@@ -30,7 +33,7 @@ impl Transaction {
     pub fn to_string(&self) -> String {
         format!("transaction_id={}, journal_id={}, account_id={}, date={}, amount={:+} description='{}'",
             self.transaction_id,
-             self.journal_id,
+            self.journal_id,
             self.account_id,
             self.date,
             self.amount,
