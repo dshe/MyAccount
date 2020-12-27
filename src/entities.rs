@@ -1,3 +1,4 @@
+use rand::random;
 use rust_decimal::Decimal;
 use chrono::{DateTime, Utc};
 
@@ -15,27 +16,46 @@ pub struct Account {
     pub name:         String
 }
 
+impl Account {
+    pub fn new(name: &str, account_type: AccountType) -> Account {
+        Account {
+            account_id: random::<u64>(),
+            account_type: account_type,
+            name: name.to_string()
+        }
+    }
+}
+
+
 pub struct Journal {
     pub journal_id: u64,
     pub title:      String
 }
 
+impl Journal {
+    pub fn new(title: &str) -> Journal {
+        Journal {
+            journal_id: random::<u64>(),
+            title: title.to_string()
+        }
+    }
+}
+
+
 pub struct Transaction {
-    pub transaction_id: u64,
+    pub date:           DateTime<Utc>,
     pub journal_id:     u64,
     pub account_id:     u64,
-    pub date:           DateTime<Utc>,
     pub amount:         Decimal, // credit/debit = positive/negative
     pub description:    String
 }
 
 impl Transaction {
     pub fn to_string(&self) -> String {
-        format!("transaction_id={}, journal_id={}, account_id={}, date={}, amount={:+} description='{}'",
-            self.transaction_id,
+        format!("date={}, journal_id={}, account_id={}, amount={:+} description='{}'",
+            self.date,
             self.journal_id,
             self.account_id,
-            self.date,
             self.amount,
             self.description)
     }
