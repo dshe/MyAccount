@@ -2,6 +2,7 @@ use rand::random;
 use rust_decimal::Decimal;
 use chrono::{DateTime, Utc};
 
+
 pub enum AccountType {
     Revenue,
     Expense,
@@ -9,6 +10,7 @@ pub enum AccountType {
     Liability,
     Equity
 }
+
 
 pub struct Account {
     pub account_id:   u64,
@@ -27,6 +29,7 @@ impl Account {
 }
 
 
+// a Journal Entry represents a group of related transactions that balance (sum to zero).
 pub struct Journal {
     pub journal_id: u64,
     pub title:      String
