@@ -22,16 +22,16 @@ fn main() {
         date:        Utc.ymd(2020, 1, 1).and_hms_milli(0, 0, 1, 444),
         journal_id:  journal1.journal_id,
         account_id:  sales_account.account_id,
-        amount:      Decimal::new(200, 1),
-        description: "sale of some item".to_string(),
+        amount:      Decimal::new(2000, 2),
+        description: "sale of some item".to_string()
     };
 
     let transaction2 = entities::Transaction {
         date:        Utc.ymd(2020, 1, 1).and_hms_milli(0, 0, 1, 444),
         journal_id:  journal1.journal_id,
         account_id:  receivable_account.account_id,
-        amount:      Decimal::new(-200, 1),
-        description: "future payment expected".to_string(),
+        amount:      Decimal::new(-2000, 2),
+        description: "future payment expected".to_string()
     };
 
     let mut transactions: Vec<&entities::Transaction> = Vec::new();
