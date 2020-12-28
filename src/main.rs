@@ -8,7 +8,6 @@ fn main() {
     // create two accounts and add them to a list of accounts
     let sales_account      = entities::Account::new("sales account",       entities::AccountType::Revenue);
     let receivable_account = entities::Account::new("accounts receivable", entities::AccountType::Asset);
-
     let mut accounts: Vec<&entities::Account> = Vec::new();
     accounts.push(&sales_account);
     accounts.push(&receivable_account);
@@ -17,7 +16,6 @@ fn main() {
     let journal1 = entities::Journal::new("sale of item to be paid in future");
     let mut journals: Vec<&entities::Journal> = Vec::new();
     journals.push(&journal1);
-
 
     // create two transactions and add them to a list
     let transaction1 = entities::Transaction {
@@ -40,7 +38,6 @@ fn main() {
     transactions.push(&transaction1);
     transactions.push(&transaction2);
 
-    
     // print all transactions
     transactions.iter().for_each(|t| println!("Transaction: {0}", t.to_string()));
 
